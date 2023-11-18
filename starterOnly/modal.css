@@ -66,6 +66,11 @@ img {
 
 .topnav .icon {
   display: none;
+  color:#ff0000;
+}
+
+.topnav .icon.active {
+  color:#ffffff;
 }
 
 @media screen and (max-width: 768px) {
@@ -462,6 +467,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -478,6 +484,20 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+
+@media screen and (max-width: 600px) {
+  .hero-section .hero-content .hero-headline {
+    font-size: 2rem;
+  }
+
+  .hero-content .hero-text {
+    font-size: 1.2rem;
+  }
+
+}
+
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -527,3 +547,19 @@ footer {
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .hero-content {
+    padding-left: 30px;
+    min-width: 334px;
+  }
+
+  .hero-content .hero-headline {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-headline {
+    font-size: 5rem;
+  }
+}

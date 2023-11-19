@@ -191,6 +191,36 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  position:relative;
+}
+
+.thank-you {
+  display:flex;
+  flex-direction:column-reverse;
+  align-items: center;
+  position: absolute;
+  top: 3.5%;
+  left: 0;
+  margin-left: 5% auto;
+  margin-right: 5% auto;
+  width: 100%;
+  max-width: 500px;  
+  background: #232323;
+  height: 94.5%;
+}
+
+#validation-success {
+  z-index: -1;
+}
+
+#validation-failure {
+  z-index: -1;
+}
+
+
+.thank-you p {
+  font-size: 1.3rem;
+  margin-bottom: 60%;
 }
 
 label {

@@ -34,28 +34,103 @@ function closeModal() {
 form.addEventListener("submit", (event) => { 
   event.preventDefault(); //prevents default refresh of the page on sumbit
 
-  //verification
-  addEventListener("click", )
+  // //verification
+  // addEventListener("click", )
 
-  //verification prénom
-  const balisePrenom = document.getElementById('first');
-  const valeurPrenom = balisePrenom.value;
-  //const valeurPrenom = document.getElementById('first').value;
-  if (valeurPrenom === "") {
-    console.log ('prénom vide');
-    //insertion message d'erreur champ vide.
+  // //verification prénom
+  // const balisePrenom = document.getElementById('first');
+  // const valeurPrenom = balisePrenom.value;
+  // //const valeurPrenom = document.getElementById('first').value;
+  // const errorPrenom = document.getElementById("#errorPrenom");
 
-  } else { 
-      if (valeurPrenom.length <= 2) {
-        console.log ('prénom trop court');
-        //insertion message d'erreur prénom.
-      } else {
-          console.log ('prénom correctement rempli');
-      }
+  // if (valeurPrenom === "") {
+  //   console.log ('prénom vide');
+  //   //insertion message d'erreur champ vide.
+  //   errorPrenom.innerHTML = "<p>Le prénom n'est pas renseigné</p>";
+
+  // } else { 
+  //     if (valeurPrenom.length <= 2) {
+  //       console.log ('prénom trop court');
+  //       //insertion message d'erreur prénom.
+
+  //     } else {
+  //         console.log ('prénom correctement rempli');
+  //         const prenomValide = true;
+
+  //     }
+  //   }
+
+    //Validation Prénom
+    let firstName = document.getElementById('first').value;
+    let firstError = document.getElementById('errorPrenom');
+    let prenomValide = false;    
+
+    if (firstName === '') {
+      firstError.textcontent = 'Le prénom doit être renseigné';
+    } else if (firstName.length < 2) {
+      firstError.textcontent = 'Le prénom est trop court';
+    } else {
+      firstError.style.display = none;
+      prenomValide = true;
+    }
+
+    //Validation Nom
+    let lastName = document.getElementById('last').value;
+    let lastError = document.getElementById('errorNom');
+    let nomValide = false;
+    
+    if (lastName === '') {
+      lastError.textcontent = 'Le nom doit être renseigné';      
+    } else if (lastName.length < 2) {
+      lastError.textcontent = 'Le nom est trop court';
+    } else {
+      lastError.style.display = none;
+      nomValide = true;
+    }    
+
+    //Validation Email
+    let emailcontent = document.getElementById('email').value;
+    let emailError = document.getElementById('errorEmail');
+    let emailValide = false;
+    
+    if (emailcontent === '') {
+      emailError.textcontent = 'L adresse mail doit être renseignée';      
+    } else if (emailContent.length < 2) {
+      emailError.textcontent = 'L adresse mail n est pas valide';
+    } else {
+      emailError.style.display = none;
+      emailValide = true;
+    }    
+
+
+
+    //Validation nombre de tournois
+    let quantityNumber = document.getElementById('quantity').value;
+    let quantityError = document.getElementById('errorTournoi');
+    let tournoiValide = false;
+    
+    if (quantityNumber === '') {
+      lastError.textcontent = 'Le nombre doit être renseigné';      
+    } else if (quantityNumber.length > 3) {
+      quantityError.textcontent = 'Le nombre renseigné est trop grand';
+    } else {
+      quantityError.style.display = none;
+      tournoiValide = true;
+    }   
+
+
+    
+
+
+    //Validation finale et affichage des remerciements
+    const tyWindow = document.getElementById('thank-you');
+
+    if ( prenomValide && nomValide && emailValide && dateValide && tournoiValide && locationValide && conditionsValide) {
+      tyWindow.style.z-index = 2;
+    } else {
+
     }
 
 
-
-    const validationOk = 
 
   });

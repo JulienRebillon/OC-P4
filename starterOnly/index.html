@@ -71,8 +71,12 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  pattern="[a-zA-Z\-]+"
                 /><br>
               </div>
+
+              <div id="errorPrenom" class="warning"></div>
+
               <div
                 class="formData">
                 <label>Nom</label><br>
@@ -81,8 +85,12 @@
                   type="text"
                   id="last"
                   name="last"
+                  pattern="[a-zA-Z\-]+"
                 /><br>
               </div>
+
+              <div id="errorNom" class="warning"></div>
+
               <div
                 class="formData">
                 <label>E-mail</label><br>
@@ -91,8 +99,12 @@
                   type="email"
                   id="email"
                   name="email"
+                  pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
                 /><br>
               </div>
+
+              <div id="errorEmail" class="warning"></div>
+
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -101,13 +113,20 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  pattern="[0-9]{2}+/+[0-9]{2}+/+[0-9]{4}";
                 /><br>
               </div>
+
+              <div id="errorDate" class="warning"></div>
+
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" pattern="[0-9]+">
               </div>
+
+              <div id="errorTournoi" class="warning"></div>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData">
@@ -179,6 +198,8 @@
                 >
               </div>
 
+              <div id="errorLocation" class="warning"></div>
+
               <div
                 class="formData">
                 <input
@@ -208,7 +229,7 @@
               />
             </form>
 
-            <div class="thank-you" id="validation-success">
+            <div id="thank-you">
               <form
               name="thank-you__close"
               action="index.html"

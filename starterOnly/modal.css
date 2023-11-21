@@ -280,6 +280,9 @@ input[data-error]::after {
   transition: 0.3s;
 }
 
+.errorConditions {
+  display: none;
+}
 
 
 .checkbox-label,

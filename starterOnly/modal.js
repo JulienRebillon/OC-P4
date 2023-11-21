@@ -60,76 +60,98 @@ form.addEventListener("submit", (event) => {
   //     }
   //   }
 
-    //Validation Prénom
-    let firstName = document.getElementById('first').value;
-    let firstError = document.getElementById('errorPrenom');
-    let prenomValide = false;    
+    // //Validation Prénom
+    // let firstName = document.getElementById('first').value;
+    // let firstError = document.getElementById('errorPrenom');
+    // let prenomValide = false;    
 
-    if (firstName === '') {
-      firstError.textcontent = 'Le prénom doit être renseigné';
-    } else if (firstName.length < 2) {
-      firstError.textcontent = 'Le prénom est trop court';
-    } else {
-      firstError.style.display = none;
-      prenomValide = true;
-    }
+    // if (firstName === '') {
+    //   firstError.textcontent = 'Le prénom doit être renseigné';
+    // } else if (firstName.length < 2) {
+    //   firstError.textcontent = 'Le prénom est trop court';
+    // } else {
+    //   firstError.style.display = none;
+    //   prenomValide = true;
+    // }
 
-    //Validation Nom
-    let lastName = document.getElementById('last').value;
-    let lastError = document.getElementById('errorNom');
-    let nomValide = false;
+    // //Validation Nom
+    // let lastName = document.getElementById('last').value;
+    // let lastError = document.getElementById('errorNom');
+    // let nomValide = false;
     
-    if (lastName === '') {
-      lastError.textcontent = 'Le nom doit être renseigné';      
-    } else if (lastName.length < 2) {
-      lastError.textcontent = 'Le nom est trop court';
-    } else {
-      lastError.style.display = none;
-      nomValide = true;
-    }    
+    // if (lastName === '') {
+    //   lastError.textcontent = 'Le nom doit être renseigné';      
+    // } else if (lastName.length < 2) {
+    //   lastError.textcontent = 'Le nom est trop court';
+    // } else {
+    //   lastError.style.display = none;
+    //   nomValide = true;
+    // }    
 
-    //Validation Email
-    let emailcontent = document.getElementById('email').value;
-    let emailError = document.getElementById('errorEmail');
-    let emailValide = false;
+    // //Validation Email
+    // let emailcontent = document.getElementById('email').value;
+    // let emailError = document.getElementById('errorEmail');
+    // let emailValide = false;
     
-    if (emailcontent === '') {
-      emailError.textcontent = 'L adresse mail doit être renseignée';      
-    } else if (emailContent.length < 2) {
-      emailError.textcontent = 'L adresse mail n est pas valide';
-    } else {
-      emailError.style.display = none;
-      emailValide = true;
-    }    
+    // if (emailcontent === '') {
+    //   emailError.textcontent = 'L adresse mail doit être renseignée';      
+    // } else if (!emailContent.length < 2) {
+    //   emailError.textcontent = 'L adresse mail n est pas valide';
+    // } else {
+    //   emailError.style.display = none;
+    //   emailValide = true;
+    // }    
 
 
 
-    //Validation nombre de tournois
-    let quantityNumber = document.getElementById('quantity').value;
-    let quantityError = document.getElementById('errorTournoi');
-    let tournoiValide = false;
+    // //Validation nombre de tournois
+    // let quantityNumber = document.getElementById('quantity').value;
+    // let quantityError = document.getElementById('errorTournoi');
+    // let tournoiValide = false;
     
-    if (quantityNumber === '') {
-      lastError.textcontent = 'Le nombre doit être renseigné';      
-    } else if (quantityNumber.length > 3) {
-      quantityError.textcontent = 'Le nombre renseigné est trop grand';
-    } else {
-      quantityError.style.display = none;
-      tournoiValide = true;
-    }   
+    // if (quantityNumber === '') {
+    //   lastError.textcontent = 'Le nombre doit être renseigné';      
+    // } else if (quantityNumber.length > 3) {
+    //   quantityError.textcontent = 'Le nombre renseigné est trop grand';
+    // } else {
+    //   quantityError.style.display = none;
+    //   tournoiValide = true;
+    // }   
 
 
-    
+    // //Validation choix d'un tournoi
+    // let options = document.getElementsByName("location");
+    // let selectedOption = false;
+
+    // for (let i = 0; i <options.length; i++) {
+    //   if (options[i].checked) {
+    //     selectedOption = true;
+    //     break;
+    //   }
+    // }
+
+    // if (!selectedOption) {
+    //   document.getElementById("errorLocation").style.display = "block";
+    // } else {
+
+    // }
 
 
-    //Validation finale et affichage des remerciements
-    const tyWindow = document.getElementById('thank-you');
+    // //Validation Conditions
+    // //let conditionsCHeck = document.getElementById("checkbox1");
 
-    if ( prenomValide && nomValide && emailValide && dateValide && tournoiValide && locationValide && conditionsValide) {
-      tyWindow.style.z-index = 2;
-    } else {
 
-    }
+
+
+
+    // //Validation finale et affichage des remerciements
+    // const tyWindow = document.getElementById('thank-you');
+
+    // if ( prenomValide && nomValide && emailValide && dateValide && tournoiValide && locationValide && conditionsValide) {
+    //   tyWindow.style.z-index = "2";
+    // } else {
+
+    // }
 
 
 

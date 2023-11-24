@@ -547,6 +547,27 @@ footer {
 
 
 @media screen and (max-width: 800px) {
+
+  .topnav .header-logo {
+    width: 180px;
+  }
+
+  .topnav .header-logo img {
+    width: 180px;
+    padding-right: 0;
+  }
+
+  .topnav a {
+    font-size: 14px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .main-navbar .icon {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -596,9 +617,29 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
+
+  .header-logo {
+    width: 200px;
+  }
+
+  .header-logo img {
+    width: 200px;
+    padding-right: 0;
+  }
+
+  .topnav .main-navbar a {
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0;
+  }
+
+
+
   .hero-content {
     padding-left: 30px;
     min-width: 334px;
+    margin-top: 0px;
   }
 
   .hero-content .hero-headline {
@@ -607,7 +648,25 @@ footer {
 }
 
 @media screen and (max-width: 1200px) {
+
+  .header-logo {
+    width: 235px;
+  }
+
+  .header-logo img {
+    width: 235px;
+    padding-right: 0;
+  }
+
+  .topnav a {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 3px;
+  }
+
   .hero-headline {
     font-size: 5rem;
   }
 }
+

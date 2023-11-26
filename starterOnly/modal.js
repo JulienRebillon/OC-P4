@@ -177,21 +177,63 @@ const validateInputs = () => { //on utilise trim pour enelver les espaces superf
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
 
-const setError = (Element; message) => {
-  const inputControl = element.parentElement; //on sélectionne l'élement parent
+const setError = (element, message) => {
+  const textControl = element.parentElement; //on sélectionne l'élement parent
   const errorDisplay = inputControl.querySelector('.error')
 
-  errorDisplay.innerText = message;
-  inputControl.classList.add('error'); //add error clas to inputcontrol
-  
+  errorDisplay.innerText = '';
+  textControl.classList.add('success');
+  textControl.classList.remove('error'); //remove CSS attributes from previous attempts
 
+
+  errorDisplay.innerText = message;
+  textControlControl.classList.add('error'); //add the red border attribute to the input
 }
 
-
+  //input prénom
   if (firstValue === "") { //check si le champ est vide
-    setError (first, 'Le prénom est requis'); //on lance la fonction qui définit InnerText pour l'élement first.
+    setError (first, 'Le prénom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement first.
   } else {
+    setSuccess(first);
+  }
 
+  // input nom
+  if (lastValue === "") { //check si le champ est vide
+    setError (last, 'Le nom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement last.
+  } else if (lastValue.length < 2) { //check number of characters
+    setError (last, 'Le nom doit comporter au moins deux caractères')
+  } else {
+    setSuccess(last);
+  }
+
+  //input email
+  if (emailValue === "") { //check si le champ est vide
+    setError (email, 'L\'adresse mail n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement email.
+  } else if (!isValidEmail(emailValue)) { //check if email input is valid
+    setError (email, 'Le L\'adresse n\'est pas valide')
+  } else {
+    setSuccess(email);
+  }
+
+  //function to see if emailValue check with the Regex
+  function isValidEmail(email) {
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g; // [^\s@] correspond à 
+    return emailRegex.test(email);
+  }
+
+  //input birthdate
+  if (birthdateValue === "") { //check si le champ est vide
+    setError (birthdate, 'La date de naissance n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
+  } else if (!isValidBirthdate(birthdateValue)) { //check if birthdate input is valid
+    setError (birthdate, 'La date de naissance n\'est pas valide')
+  } else {
+    setSuccess(birthdate);
+  }
+
+  //function to see if BirthdateValue check with the Regex
+  function isValidBirthdate(birthdate) {
+    const birthdateRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g; // [^\s@] correspond à 
+    return birthdateRegex.test(birthdate);
   }
 
 

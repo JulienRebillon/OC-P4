@@ -280,6 +280,11 @@ input[data-error]::after {
   transition: 0.3s;
 }
 
+.text-control.error input {
+  border: 2px solid #e54858;
+}
+
+
 .errorConditions {
   display: none;
 }

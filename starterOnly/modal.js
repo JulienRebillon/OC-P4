@@ -13,6 +13,16 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
 
+const form = document.getElementById('form');
+const first = document.getElementById('first');
+const last = document.getElementById('last');
+const email = document.getElementById('email');
+const birthdate = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity');
+
+const checkbox1 = document.getElementById('checkbox1');
+const checkbox2 = document.getElementById('checkbox2');
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -31,8 +41,8 @@ function closeModal() {
 }
 
 // launch data format verification
-form.addEventListener("submit", (event) => { 
-  event.preventDefault(); //prevents default refresh of the page on sumbit
+//form.addEventListener("submit", (event) => { 
+//  event.preventDefault(); //prevents default refresh of the page on sumbit
 
   // //verification
   // addEventListener("click", )
@@ -153,9 +163,40 @@ form.addEventListener("submit", (event) => {
 
     // }
 
-    
+form.addEventListener('submit', e => { //empeche le rafraichissement par défaut du navigateur
+
+  e.preventDefault();
+  validateInputs();
+
+});
+
+const validateInputs = () => { //on utilise trim pour enelver les espaces superflus
+  const firstValue = first.value.trim();
+  const lastValue = last.value.trim();
+  const emailValue = email.value.trim();
+  const birthdateValue = birthdate.value.trim();
+  const quantityValue = quantity.value.trim();
+
+const setError = (Element; message) => {
+  const inputControl = element.parentElement; //on sélectionne l'élement parent
+  const errorDisplay = inputControl.querySelector('.error')
+
+  errorDisplay.innerText = message;
+  inputControl.classList.add('error'); //add error clas to inputcontrol
+  
+
+}
 
 
+  if (firstValue === "") { //check si le champ est vide
+    setError (first, 'Le prénom est requis'); //on lance la fonction qui définit InnerText pour l'élement first.
+  } else {
+
+  }
+
+
+
+}
 
 
 

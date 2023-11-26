@@ -194,8 +194,8 @@ main {
   position:relative;
 }
 
-.thank-you {
-  display:flex;
+#thank-you {
+  display: none;
   flex-direction:column-reverse;
   align-items: center;
   position: absolute;

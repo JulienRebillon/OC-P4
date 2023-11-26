@@ -201,7 +201,7 @@ const setError = (element, message) => {
   if (lastValue === "") { //check si le champ est vide
     setError (last, 'Le nom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement last.
   } else if (lastValue.length < 2) { //check number of characters
-    setError (last, 'Le nom doit comporter au moins deux caractères')
+    setError (last, 'Le nom doit comporter au moins deux caractères');
   } else {
     setSuccess(last);
   }
@@ -210,7 +210,7 @@ const setError = (element, message) => {
   if (emailValue === "") { //check si le champ est vide
     setError (email, 'L\'adresse mail n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement email.
   } else if (!isValidEmail(emailValue)) { //check if email input is valid
-    setError (email, 'Le L\'adresse n\'est pas valide')
+    setError (email, 'Le L\'adresse n\'est pas valide');
   } else {
     setSuccess(email);
   }
@@ -225,17 +225,32 @@ const setError = (element, message) => {
   if (birthdateValue === "") { //check si le champ est vide
     setError (birthdate, 'La date de naissance n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
   } else if (!isValidBirthdate(birthdateValue)) { //check if birthdate input is valid
-    setError (birthdate, 'La date de naissance n\'est pas valide')
+    setError (birthdate, 'La date de naissance n\'est pas valide');
   } else {
     setSuccess(birthdate);
   }
 
   //function to see if BirthdateValue check with the Regex
   function isValidBirthdate(birthdate) {
-    const birthdateRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g; // [^\s@] correspond à 
+    const birthdateRegex = /^(((0[1-9]|[12][0-9]|3[01])[- /.](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[- /.](0[469]|11)|(0[1-9]|1\d|2[0-8])[- /.]02)[- /.]\d{4}|29[- /.]02[- /.](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/;
     return birthdateRegex.test(birthdate);
   }
 
+
+  //Input quantity
+  if (quantityValue === "") { //check si le champ est vide
+    setError (quantity, 'Vous devez renseigner un nombre'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
+  } else if (!isValidQuantity(quantityValue)) { //check if birthdate input is valid
+    setError (quantity, 'Le nombre renseigné n\'est pas valide');
+  } else {
+    setSuccess(quantity);
+  }
+
+    //function to see if quantityValue check with the Regex
+    function isValidQuantity(quantity) {
+      const quantityRegex = /[0-9]{1,3}/; //0 à 999 visites valides.
+      return quantityRegex.test(quantity);
+    }
 
 
 }

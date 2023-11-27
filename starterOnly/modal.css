@@ -268,7 +268,7 @@ input[data-error]::after {
     color: red;
 } */
 
-.warning {
+/*.warning {
   font-size: 0.4em;
   color: #e54858;
   display: block;
@@ -278,13 +278,13 @@ input[data-error]::after {
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
-}
+}*/
 
-.text-control.error input {
+.formData.error input {
   border: 2px solid #e54858;
 }
 
-.text-control .error {
+.formData .error {
   color:#e54858;
   font-size: 0.4em;
   display: block;
@@ -297,9 +297,6 @@ input[data-error]::after {
 }
 
 
-.errorConditions {
-  display: none;
-}
 
 
 .checkbox-label,

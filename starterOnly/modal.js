@@ -176,6 +176,7 @@ const validateInputs = () => { //on utilise trim pour enelver les espaces superf
   const emailValue = email.value.trim();
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
+   
 
 const setError = (element, message) => {
   const textControl = element.parentElement; //on sélectionne l'élement parent
@@ -193,18 +194,39 @@ const setError = (element, message) => {
   //input prénom
   if (firstValue === "") { //check si le champ est vide
     setError (first, 'Le prénom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement first.
+  } else if (firstValue.length < 2) { //check number of characters
+    setError (first, 'Le prénom doit comporter au moins deux caractères');
+  } else if (!isValidFirst(first)) {
+    setError(first, 'Le prénom n\'est pas valide');
   } else {
     setSuccess(first);
   }
+
+   //function to see if firstValue check with the Regex
+   function isValidFirst(first) {
+    const firstRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
+    return firstRegex.test(first);
+  }
+
 
   // input nom
   if (lastValue === "") { //check si le champ est vide
     setError (last, 'Le nom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement last.
   } else if (lastValue.length < 2) { //check number of characters
     setError (last, 'Le nom doit comporter au moins deux caractères');
+  } else if () {
+    setError(first, 'Le nom n\'est pas valide');
   } else {
     setSuccess(last);
   }
+
+  //function to see if lastValue check with the Regex
+  function isValidLast(last) {
+    const lastRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
+    return lastRegex.test(last);
+  }
+
+
 
   //input email
   if (emailValue === "") { //check si le champ est vide
@@ -246,20 +268,17 @@ const setError = (element, message) => {
     setSuccess(quantity);
   }
 
-    //function to see if quantityValue check with the Regex
-    function isValidQuantity(quantity) {
-      const quantityRegex = /[0-9]{1,3}/; //0 à 999 visites valides.
-      return quantityRegex.test(quantity);
-    }
+  //function to see if quantityValue check with the Regex
+  function isValidQuantity(quantity) {
+    const quantityRegex = /[0-9]{1,3}/; //0 à 999 visites valides.
+    return quantityRegex.test(quantity);
+  }
 
 
-}
-
-
-
-
-
-
+  //input checkbox1
+  if (checkbox1.checked) {
+    setSuccess
+  }
 
 
 
@@ -268,27 +287,19 @@ const setError = (element, message) => {
 
 
 
+};
 
+//regex for names
 
+// /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  });
+//characters supported:
+// abcdefghijklmnopqrstwxyz
+// ABCDEFGHIJKLMNOPQRSTUVWXYZ
+// áéíóúäëïöüÄ'
+// 陳大文
+// łŁőŐűŰZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųū
+// ÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁ
+// ŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ.-
+// ñÑâê都道府県Федерации
+// আবাসযোগ্য জমির걸쳐 있는

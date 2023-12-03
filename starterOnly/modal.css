@@ -209,6 +209,8 @@ main {
   height: 94.5%;
 }
 
+
+
 #validation-success {
   z-index: -1;
 }
@@ -216,6 +218,7 @@ main {
 #validation-failure {
   z-index: -1;
 }
+
 
 
 .thank-you p {
@@ -287,7 +290,7 @@ input[data-error]::after {
 .formData .error {
   color:#e54858;
   font-size: 0.4em;
-  display: block;
+  display: none;
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;

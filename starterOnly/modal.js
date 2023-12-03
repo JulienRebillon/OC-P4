@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
+const thanks = document.getElementById('thank-you')
 
 const form = document.getElementById('form');
 const first = document.getElementById('first');
@@ -20,8 +21,13 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 
+const radioButtons = document.getElementsByName('location');
+
 const checkbox1 = document.getElementById('checkbox1');
 const checkbox2 = document.getElementById('checkbox2');
+
+const formSubmit = document.getElementById('form-submit');
+const submit = document.getElementById('submit');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -38,6 +44,11 @@ modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 // Close modal form
 function closeModal() {
   modalbg.style.display = "none";
+}
+
+// Open Thanks
+function openThanks() {
+  thanks.style.display = "block";
 }
 
 // launch data format verification
@@ -163,6 +174,155 @@ function closeModal() {
 
     // }
 
+// form.addEventListener('submit', e => { //empeche le rafraichissement par défaut du navigateur
+
+//   e.preventDefault();
+//   validateInputs();
+
+// });
+
+// const validateInputs = () => { //on utilise trim pour enlever les espaces superflus
+//   const firstValue = first.value.trim();
+//   const lastValue = last.value.trim();
+//   const emailValue = email.value.trim();
+//   const birthdateValue = birthdate.value.trim();
+//   const quantityValue = quantity.value.trim();
+   
+
+// const setError = (element, message) => {
+//   const formData = element.parentElement; //on sélectionne l'élement parent
+//   //const errorDisplay = inputControl.querySelector('.error');
+
+//   errorDisplay.innerText = '';
+//   // formData.classList.add('success');
+//   formData.classList.remove('error'); //remove CSS attributes from previous attempts
+
+
+//   errorDisplay.innerText = message;
+//   textControlControl.classList.add('error'); //add the red border attribute to the input
+// }
+
+//   //input prénom
+//   if (firstValue === "") { //check si le champ est vide
+//     setError (first, 'Le prénom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement first.
+//   } else if (firstValue.length < 2) { //check number of characters
+//     setError (first, 'Le prénom doit comporter au moins deux caractères');
+//   } else if (!isValidFirst(first)) {
+//     setError(first, 'Le prénom n\'est pas valide');
+//   } else {
+//     setSuccess(first);
+//   }
+
+//    //function to see if firstValue check with the Regex
+//    function isValidFirst(first) {
+//     const firstRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
+//     return firstRegex.test(first);
+//   }
+
+
+
+//   // input nom
+//   if (lastValue === "") { //check si le champ est vide
+//     setError (last, 'Le nom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement last.
+//   } else if (lastValue.length < 4) { //check number of characters
+//     setError (last, 'Le nom doit comporter au moins deux caractères');
+//   } else if (!isValidLast(last)) {
+//     setError(last, 'Le nom n\'est pas valide');
+//   } else {
+//     setSuccess(last);
+//   }
+
+//   //function to see if lastValue check with the Regex
+//   function isValidLast(last) {
+//     const lastRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
+//     return lastRegex.test(last);
+//   }
+
+
+
+
+//   //input email
+//   if (emailValue === "") { //check si le champ est vide
+//     setError (email, 'L\'adresse mail n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement email.
+//   } else if (!isValidEmail(emailValue)) { //check if email input is valid
+//     setError (email, 'Le L\'adresse n\'est pas valide');
+//   } else {
+//     setSuccess(email);
+//   }
+
+//   //function to see if emailValue check with the Regex
+//   function isValidEmail(email) {
+//     const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g; // [^\s@] correspond à 
+//     return emailRegex.test(email);
+//   }
+
+
+
+
+//   //input birthdate
+//   if (birthdateValue === "") { //check si le champ est vide
+//     setError (birthdate, 'La date de naissance n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
+//   } else if (!isValidBirthdate(birthdateValue)) { //check if birthdate input is valid
+//     setError (birthdate, 'La date de naissance n\'est pas valide');
+//   } else {
+//     setSuccess(birthdate);
+//   }
+
+//   //function to see if BirthdateValue check with the Regex
+//   function isValidBirthdate(birthdate) {
+//     const birthdateRegex = /^(((0[1-9]|[12][0-9]|3[01])[- /.](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[- /.](0[469]|11)|(0[1-9]|1\d|2[0-8])[- /.]02)[- /.]\d{4}|29[- /.]02[- /.](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/;
+//     return birthdateRegex.test(birthdate);
+//   }
+
+
+
+//   //Input quantity
+//   if (quantityValue === "") { //check si le champ est vide
+//     setError (quantity, 'Vous devez renseigner un nombre'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
+//   } else if (!isValidQuantity(quantityValue)) { //check if birthdate input is valid
+//     setError (quantity, 'Le nombre renseigné n\'est pas valide');
+//   } else {
+//     setSuccess(quantity);
+//   }
+
+//   //function to see if quantityValue check with the Regex
+//   function isValidQuantity(quantity) {
+//     const quantityRegex = /[0-9]{1,2}/; //0 à 99 visites valides.
+//     return quantityRegex.test(quantity);
+//   }
+
+
+//   //Input Location
+//   function location() {
+  
+//     for (let i = 0; i < 6; i++) {
+
+//       if (radioButtons[i].checked) {
+//         // return radioButtons[i].value;
+//         console.log('bouton radio activé' );
+//       } else {
+//         // setError (location, 'Vous devez sélectionner une location');
+//         console.log('echec bouton loc')
+//       }
+
+//     }
+//   }
+
+
+
+
+
+
+
+
+//   //input checkbox1
+//   if (checkbox1.checked) {
+//     setSuccess(checkbox1);
+//   } else {
+//     setError (checkbox1, 'Vous devez accepter les conditions d\'utilisation');
+//   }
+
+
 form.addEventListener('submit', e => { //empeche le rafraichissement par défaut du navigateur
 
   e.preventDefault();
@@ -170,121 +330,27 @@ form.addEventListener('submit', e => { //empeche le rafraichissement par défaut
 
 });
 
-const validateInputs = () => { //on utilise trim pour enelver les espaces superflus
+
+
+const validateInputs = () => { //on utilise trim pour enlever les espaces superflus
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
   const emailValue = email.value.trim();
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
-   
 
-const setError = (element, message) => {
-  const textControl = element.parentElement; //on sélectionne l'élement parent
-  const errorDisplay = inputControl.querySelector('.error')
-
-  errorDisplay.innerText = '';
-  textControl.classList.add('success');
-  textControl.classList.remove('error'); //remove CSS attributes from previous attempts
-
-
-  errorDisplay.innerText = message;
-  textControlControl.classList.add('error'); //add the red border attribute to the input
-}
-
-  //input prénom
-  if (firstValue === "") { //check si le champ est vide
-    setError (first, 'Le prénom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement first.
-  } else if (firstValue.length < 2) { //check number of characters
-    setError (first, 'Le prénom doit comporter au moins deux caractères');
-  } else if (!isValidFirst(first)) {
-    setError(first, 'Le prénom n\'est pas valide');
-  } else {
-    setSuccess(first);
-  }
-
-   //function to see if firstValue check with the Regex
-   function isValidFirst(first) {
-    const firstRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
-    return firstRegex.test(first);
-  }
-
-
-  // input nom
-  if (lastValue === "") { //check si le champ est vide
-    setError (last, 'Le nom est requis'); //on lance la fonction qui définit l'InnerText pour l'élement last.
-  } else if (lastValue.length < 2) { //check number of characters
-    setError (last, 'Le nom doit comporter au moins deux caractères');
-  } else if () {
-    setError(first, 'Le nom n\'est pas valide');
-  } else {
-    setSuccess(last);
-  }
-
-  //function to see if lastValue check with the Regex
-  function isValidLast(last) {
-    const lastRegex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;  
-    return lastRegex.test(last);
-  }
-
-
-
-  //input email
-  if (emailValue === "") { //check si le champ est vide
-    setError (email, 'L\'adresse mail n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement email.
-  } else if (!isValidEmail(emailValue)) { //check if email input is valid
-    setError (email, 'Le L\'adresse n\'est pas valide');
-  } else {
-    setSuccess(email);
-  }
-
-  //function to see if emailValue check with the Regex
-  function isValidEmail(email) {
-    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g; // [^\s@] correspond à 
-    return emailRegex.test(email);
-  }
-
-  //input birthdate
-  if (birthdateValue === "") { //check si le champ est vide
-    setError (birthdate, 'La date de naissance n\'est pas renseignée'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
-  } else if (!isValidBirthdate(birthdateValue)) { //check if birthdate input is valid
-    setError (birthdate, 'La date de naissance n\'est pas valide');
-  } else {
-    setSuccess(birthdate);
-  }
-
-  //function to see if BirthdateValue check with the Regex
-  function isValidBirthdate(birthdate) {
-    const birthdateRegex = /^(((0[1-9]|[12][0-9]|3[01])[- /.](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[- /.](0[469]|11)|(0[1-9]|1\d|2[0-8])[- /.]02)[- /.]\d{4}|29[- /.]02[- /.](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/;
-    return birthdateRegex.test(birthdate);
-  }
-
-
-  //Input quantity
-  if (quantityValue === "") { //check si le champ est vide
-    setError (quantity, 'Vous devez renseigner un nombre'); //on lance la fonction qui définit l'InnerText pour l'élement birthdate.
-  } else if (!isValidQuantity(quantityValue)) { //check if birthdate input is valid
-    setError (quantity, 'Le nombre renseigné n\'est pas valide');
-  } else {
-    setSuccess(quantity);
-  }
-
-  //function to see if quantityValue check with the Regex
-  function isValidQuantity(quantity) {
-    const quantityRegex = /[0-9]{1,3}/; //0 à 999 visites valides.
-    return quantityRegex.test(quantity);
-  }
-
-
-  //input checkbox1
-  if (checkbox1.checked) {
-    setSuccess
-  }
+  
 
 
 
 
 
+  
 
+
+
+
+  openThanks ();
 
 
 };

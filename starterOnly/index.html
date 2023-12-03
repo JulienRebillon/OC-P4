@@ -71,7 +71,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                
                 />
                 <div class="error"></div>
                 <br>
@@ -126,7 +126,7 @@
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" pattern="[0-9]+">
+                <input type="number" class="text-control" id="quantity" name="quantity">
                 <div class="error"></div>
               </div>
 
@@ -207,18 +207,19 @@
 
               <div
                 class="formData">
-                <input
+                <!--<input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   
-                />
-                <div class="error"></div>
+                />-->
                 
+                <input class="checkbox-input" type="checkbox" id="checkbox1"/>
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                
 
                 
                 <br>
@@ -250,6 +251,7 @@
                 type="submit"
                 class="button"
                 value="Fermer"
+                onclick="closeModal()"
               />
               </form>
               <p>Merci pour votre incription</p>

@@ -29,8 +29,14 @@ const checkbox2 = document.getElementById('checkbox2');
 const formSubmit = document.getElementById('form-submit');
 const submit = document.getElementById('submit');
 
+//validation de chaque champ
 let firstValidate = false;
 let lastValidate = false;
+let emailValidate = false;
+let birthdateValidate = false;
+let quantityValidate = false;
+let locationValidate = false;
+let checkbox1Validate = false;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -351,8 +357,15 @@ const setSuccess = element => {
   inputControl.classList.remove('error');
 };
 
+//définition des regex
 const isValidFirst = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+const isValidEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+//regex date, permet / - et . comme séparateurs
+const isValidBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+const isQuantityValidate = /[0-9]{1,2}/;
+
+
 
 const validateInputs = () => { //on utilise trim pour enlever les espaces superflus
   const firstValue = first.value.trim();
@@ -361,6 +374,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
 
+  // Prénom
   if (firstValue.length < 2) {
     setError(first, 'Vous devez rentrer au moins deux caractères');
   } else if (!isValidFirst.test(firstValue)) {
@@ -370,6 +384,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     firstValidate = true;
   }
 
+  // Nom
   if (lastValue.length < 2) {
     setError(last, 'Vous devez rentrer au moins deux caractères');
   } else if (!isValidLast.test(lastValue)) {
@@ -379,9 +394,46 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     lastValidate = true;
   }
 
+  // Email
+  if (emailValue.length === "") {
+    setError(email, 'L\'adresse email n\'est pas renseignée');
+  } else if (!isValidEmail.test(emailValue)) {
+    setError(email, 'L\'adresse email n\'est pas valide');
+  } else {
+    setSuccess(email);
+    emailValidate = true;
+  }
 
+  // Date de naissance
+  if (birthdateValue.length === "") {
+    setError(birthdate, 'La date de naissance n\'est pas renseignée');
+  } else if (!isValidBirthdate.test(birthdateValue)) {
+    setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
+  } else {
+    setSuccess(birthdate);
+    emailValidate = true;
+  }
 
+   // Nombre de tournois
+   if (quantityValue.length === "") {
+    setError(quantity, 'Vous devez rentrer un nombre');
+  } else if (!isValidQuantity.test(quantityValue)) {
+    setError(quantity, 'Le nombre renseignée n\'est pas valide');
+  } else {
+    setSuccess(quantity);
+    quantityValidate = true;
+  }
   
+  //Location
+
+
+
+
+
+  // Conditions d'utilisation
+
+
+
 
 
 

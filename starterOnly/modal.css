@@ -284,13 +284,13 @@ input[data-error]::after {
 }*/
 
 .formData.error input {
-  border: 2px solid #e54858;
+  border: 3px solid #e54858;
 }
 
 .formData .error {
   color:#e54858;
   font-size: 0.4em;
-  display: none;
+  display: block;
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;

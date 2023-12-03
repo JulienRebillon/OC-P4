@@ -29,6 +29,9 @@ const checkbox2 = document.getElementById('checkbox2');
 const formSubmit = document.getElementById('form-submit');
 const submit = document.getElementById('submit');
 
+let firstValidate = false;
+let lastValidate = false;
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -330,7 +333,26 @@ form.addEventListener('submit', e => { //empeche le rafraichissement par défaut
 
 });
 
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
 
+  errorDisplay.innerText = message;
+  inputControl.classList.add('error');
+  inputControl.classList.remove('success')
+}
+
+const setSuccess = element => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
+
+  errorDisplay.innerText = '';
+  inputControl.classList.add('success');
+  inputControl.classList.remove('error');
+};
+
+const isValidFirst = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 
 const validateInputs = () => { //on utilise trim pour enlever les espaces superflus
   const firstValue = first.value.trim();
@@ -339,18 +361,35 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
 
+  if (firstValue.length < 2) {
+    setError(first, 'Vous devez rentrer au moins deux caractères');
+  } else if (!isValidFirst.test(firstValue)) {
+    setError(first, 'Le prénom n\'est pas valide');
+  } else {
+    setSuccess(first);
+    firstValidate = true;
+  }
+
+  if (lastValue.length < 2) {
+    setError(last, 'Vous devez rentrer au moins deux caractères');
+  } else if (!isValidLast.test(lastValue)) {
+    setError(last, 'Le nom n\'est pas valide');
+  } else {
+    setSuccess(last);
+    lastValidate = true;
+  }
+
+
+
   
 
 
 
-
-
-  
-
-
-
-
-  openThanks ();
+  if ( firstValidate === true && lastValidate === true) {
+    openThanks ();
+  } else {
+    
+  }
 
 
 };

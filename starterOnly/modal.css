@@ -289,13 +289,12 @@ input[data-error]::after {
 
 .formData .error {
   color:#e54858;
-  font-size: 0.4em;
+  font-size: 0.6em;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
-  line-height: 0.3;
-  opacity: 0;
+  line-height: 1;
   transition: 0.3s;
 }
 

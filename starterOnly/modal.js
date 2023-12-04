@@ -24,6 +24,9 @@ const quantity = document.getElementById('quantity');
 const radioButtons = document.getElementsByName('location');
 
 const checkbox1 = document.getElementById('checkbox1');
+
+const errorCheckbox1 = document.getElementById('error__checkbox1');
+
 const checkbox2 = document.getElementById('checkbox2');
 
 const formSubmit = document.getElementById('form-submit');
@@ -38,6 +41,8 @@ let quantityValidate = false;
 let locationValidate = false;
 let checkbox1Validate = false;
 
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -47,7 +52,7 @@ function launchModal() {
 }
 
 // Close modal event
-modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
+//modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 //modalClose.addEventListener("click", closeModal);
 
 // Close modal form
@@ -345,7 +350,7 @@ const setError = (element, message) => {
 
   errorDisplay.innerText = message;
   inputControl.classList.add('error');
-  inputControl.classList.remove('success')
+  inputControl.classList.remove('success');
 }
 
 const setSuccess = element => {
@@ -357,13 +362,14 @@ const setSuccess = element => {
   inputControl.classList.remove('error');
 };
 
+
 //définition des regex
 const isValidFirst = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const isValidEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 //regex date, permet / - et . comme séparateurs
 const isValidBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-const isQuantityValidate = /[0-9]{1,2}/;
+const isValidQuantity = /[0-9]{1,2}/;
 
 
 
@@ -415,7 +421,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   }
 
    // Nombre de tournois
-   if (quantityValue.length === "") {
+  if (quantityValue.length === "") {
     setError(quantity, 'Vous devez rentrer un nombre');
   } else if (!isValidQuantity.test(quantityValue)) {
     setError(quantity, 'Le nombre renseignée n\'est pas valide');
@@ -425,22 +431,34 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   }
   
   //Location
-
-
+  for (var i = 0; i < 6; i++) {
+    if (radioButtons[i].checked) {
+      locationValidate === true;
+    } else {
+      setError(location, 'Vous devez sélectionner un lieu.');
+    }
+  }
+  
 
 
 
   // Conditions d'utilisation
+  if ( checkbox1.checked) {
+    checkbox1Validate = true;
+  } else {
+    setError(checkbox1, 'Vous devez accepter les conditions d\'utilisation');
+    //errorCheckbox1.style.display = "block";
+  }
 
 
 
 
-
-
+  //validation de tous les champs
   if ( firstValidate === true && lastValidate === true) {
     openThanks ();
+    //form.style.display = "none";
   } else {
-    
+    console.log('erreur validation')
   }
 
 

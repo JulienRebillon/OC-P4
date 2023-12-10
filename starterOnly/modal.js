@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
-const thanks = document.getElementById('thank-you')
+const thanks = document.getElementById('thank-you');
 
 const form = document.getElementById('form');
 const first = document.getElementById('first');
@@ -22,6 +22,8 @@ const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 
 const radioButtons = document.getElementsByName('location');
+
+const error__location = document.getElementById('error__location');
 
 const checkbox1 = document.getElementById('checkbox1');
 
@@ -444,11 +446,17 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   //Location
   for (var i = 0; i < 6; i++) {
     if (radioButtons[i].checked) {
-      locationValidate === true;
-    } else {
-      setError(location, 'Vous devez sélectionner un lieu.');
-    }
+      locationValidate = true;
+      break;
+    } 
   }
+
+  if (!locationValidate) {
+    setError(error__location, 'Vous devez sélectionner un lieu');
+  } else {
+    setError(error__location, ''); //reset message d'erreur
+  }
+ 
   
 
 
@@ -465,17 +473,21 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
 
 
   //validation de tous les champs
-  if ( firstValidate === true && lastValidate === true) {
-    openThanks ();
-    //form.style.display = "none";
+  if ( firstValidate === true && lastValidate === true && emailValidate === true
+    ) {
+    openThanks();
   } else {
-    console.log('erreur validation')
+    console.log('erreur validation');
   }
 
 
 };
 
 //regex for names
+
+//&& birthdateValidate === true && quantityValidate === true 
+  //  && locationValidate === true && checkbox1Validate === true
+
 
 // /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
 

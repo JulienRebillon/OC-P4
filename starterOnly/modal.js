@@ -55,6 +55,7 @@ function launchModal() {
 //modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 //modalClose.addEventListener("click", closeModal);
 
+
 // Close modal form
 function closeModal() {
   modalbg.style.display = "none";
@@ -411,10 +412,17 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   }
 
   // Date de naissance
+  
+  let currentDate = new Date();  
+  let ageDifference = (currentDate - birthdateValue) / (1000*60*60*24*365.25);
+  //let ageDifference = 19;
+
   if (birthdateValue.length === "") {
     setError(birthdate, 'La date de naissance n\'est pas renseignée');
   } else if (!isValidBirthdate.test(birthdateValue)) {
     setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
+  } else if (ageDifference < 18) {
+    setError(birthdate, 'Vous devez être majeur')
   } else {
     setSuccess(birthdate);
     emailValidate = true;

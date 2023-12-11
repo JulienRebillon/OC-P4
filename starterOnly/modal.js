@@ -54,6 +54,10 @@ function launchModal() {
 }
 
 // Close modal event
+
+// modalClose.forEach(function(element) {
+//   element.addEventListener("click",closeModal);
+// });
 //modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 //modalClose.addEventListener("click", closeModal);
 
@@ -372,7 +376,7 @@ const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const isValidEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 //regex date, permet / - et . comme séparateurs
 //const isValidBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-const isValidBirthdate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/
+const isValidBirthdate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 const isValidQuantity = /[0-9]{1,2}/;
 
 
@@ -427,10 +431,10 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   } else if (!isValidBirthdate.test(birthdateValue)) {
     setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
   } else if (ageDifference < 18) {
-    setError(birthdate, 'Vous devez être majeur')
+    setError(birthdate, 'Vous devez être majeur');
   } else {
     setSuccess(birthdate);
-    emailValidate = true;
+    birthdateValidate = true;
   }
 
    // Nombre de tournois
@@ -464,6 +468,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   // Conditions d'utilisation
   if ( checkbox1.checked) {
     checkbox1Validate = true;
+    setError(checkbox1, '');
   } else {
     setError(checkbox1, 'Vous devez accepter les conditions d\'utilisation');
     //errorCheckbox1.style.display = "block";
@@ -474,7 +479,8 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
 
   //validation de tous les champs
   if ( firstValidate === true && lastValidate === true && emailValidate === true
-    ) {
+      && birthdateValidate === true && quantityValidate === true 
+      && locationValidate === true && checkbox1Validate === true) {
     openThanks();
   } else {
     console.log('erreur validation');
@@ -485,8 +491,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
 
 //regex for names
 
-//&& birthdateValidate === true && quantityValidate === true 
-  //  && locationValidate === true && checkbox1Validate === true
+
 
 
 // /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/

@@ -385,6 +385,8 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 3;
+
 }
 .close:before,
 .close:after {

@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const content = document.querySelectorAll(".content");
 const modalClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
 const thanks = document.getElementById('thank-you');
@@ -18,7 +19,7 @@ const form = document.getElementById('form');
 const first = document.getElementById('first');
 const last = document.getElementById('last');
 const email = document.getElementById('email');
-const birthdate = document.getElementById('birthdate');
+//const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 
 const radioButtons = document.getElementsByName('location');
@@ -48,9 +49,11 @@ let checkbox1Validate = false;
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  
 }
 
 // Close modal event
@@ -64,7 +67,10 @@ function launchModal() {
 
 // Close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  const popup = document.getElementById('myPopup');
+  console.log("closeModal lancée");
+  popup.style.display = "none";
+  
 }
 
 // Open Thanks
@@ -376,7 +382,7 @@ const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const isValidEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 //regex date, permet / - et . comme séparateurs
 //const isValidBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-const isValidBirthdate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+//const isValidBirthdate = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([1][26]|[2468][048]|[3579][26])00))))$/gm;
 const isValidQuantity = /[0-9]{1,2}/;
 
 
@@ -385,7 +391,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
   const emailValue = email.value.trim();
-  const birthdateValue = birthdate.value.trim();
+  //const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
 
   // Prénom
@@ -415,33 +421,66 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     setError(email, 'L\'adresse email n\'est pas valide');
   } else {
     setSuccess(email);
+    //setError(email, ''); //reset du message d'erreur
     emailValidate = true;
   }
 
   // Date de naissance
+  // let birthdateInput = document.getElementById('birthdate').value;
+  // let birthdate = new Date(birthdateInput);
+
+  // if (!birthdateInput) {
+  //   setError(birthdate, 'la date de naissance n\'est pas renseignée');
+  //   console.log ('erruer date pas renseignée');
+  // }
+
   
-  let currentDate = new Date();  
-  let ageDifference = (currentDate - birthdateValue) / (1000*60*60*24*365.25);
+
+  // let today = new Date();
+  // let age = today.getFullYear() - birthdate.getFullYear();
+
+  // if (age < 18) {
+  //   setError(birthdate, 'Vous devez être majeur');
+  // } else {
+  //   setError(birthdate, '');
+  //   birthdateValidate = true;
+  // }
+
+  
+  //let currentDate = new Date();  
+  //let ageDifference = (currentDate - birthdateValue) / (1000*60*60*24*365.25);
   //let ageDifference = 19;
 
-  console.log(ageDifference.value);
+  // console.log(ageDifference.value);
 
-  if (birthdateValue.length === "") {
+  // if (birthdateValue.length === "") {
+  //   setError(birthdate, 'la date de naissance n\'est pas renseignée');
+  // } else if (!isValidBirthdate.test(birthdateValue)) {
+  //   setError(birthdate, 'La date de naissance n\'est pas valide');
+  // } else {
+  //   setSuccess(birthdate);
+  //   birthdateValidate = true;
+  // }
+
+
+
+
+  if (!birthdateValue) {
     setError(birthdate, 'La date de naissance n\'est pas renseignée');
   } else if (!isValidBirthdate.test(birthdateValue)) {
     setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
-  } else if (ageDifference < 18) {
-    setError(birthdate, 'Vous devez être majeur');
   } else {
     setSuccess(birthdate);
+    setError(birthdate, '');
     birthdateValidate = true;
   }
+
 
    // Nombre de tournois
   if (quantityValue.length === "") {
     setError(quantity, 'Vous devez rentrer un nombre');
   } else if (!isValidQuantity.test(quantityValue)) {
-    setError(quantity, 'Le nombre renseignée n\'est pas valide');
+    setError(quantity, 'Le nombre renseigné n\'est pas valide');
   } else {
     setSuccess(quantity);
     quantityValidate = true;
@@ -478,9 +517,10 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
 
 
   //validation de tous les champs
-  if ( firstValidate === true && lastValidate === true && emailValidate === true
-      && birthdateValidate === true && quantityValidate === true 
-      && locationValidate === true && checkbox1Validate === true) {
+  if ( firstValidate === true && lastValidate === true 
+    && emailValidate === true && birthdateValidate === true 
+    && quantityValidate === true && locationValidate === true 
+    && checkbox1Validate === true) {
     openThanks();
   } else {
     console.log('erreur validation');

@@ -383,6 +383,7 @@ const isValidEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~
 //regex date, permet / - et . comme séparateurs
 //const isValidBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
 //const isValidBirthdate = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([1][26]|[2468][048]|[3579][26])00))))$/gm;
+//const isValidBirthdate = /^\d{2}\/\d{2}\/\d{4}$/;
 const isValidQuantity = /[0-9]{1,2}/;
 
 
@@ -425,55 +426,58 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     emailValidate = true;
   }
 
+
+
   // Date de naissance
-  // let birthdateInput = document.getElementById('birthdate').value;
-  // let birthdate = new Date(birthdateInput);
 
-  // if (!birthdateInput) {
-  //   setError(birthdate, 'la date de naissance n\'est pas renseignée');
-  //   console.log ('erruer date pas renseignée');
-  // }
-
-  
-
-  // let today = new Date();
-  // let age = today.getFullYear() - birthdate.getFullYear();
-
-  // if (age < 18) {
-  //   setError(birthdate, 'Vous devez être majeur');
-  // } else {
-  //   setError(birthdate, '');
-  //   birthdateValidate = true;
-  // }
-
-  
-  //let currentDate = new Date();  
-  //let ageDifference = (currentDate - birthdateValue) / (1000*60*60*24*365.25);
-  //let ageDifference = 19;
-
-  // console.log(ageDifference.value);
-
+  // console.log(birthdateValue);
   // if (birthdateValue.length === "") {
-  //   setError(birthdate, 'la date de naissance n\'est pas renseignée');
+  //   setError(birthdate, 'La date de naissance n\'est pas renseignée');
   // } else if (!isValidBirthdate.test(birthdateValue)) {
-  //   setError(birthdate, 'La date de naissance n\'est pas valide');
+  //   setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
   // } else {
   //   setSuccess(birthdate);
+  //   //setError(birthdate, '');
   //   birthdateValidate = true;
+  // }
+  let birthdateInput = document.getElementById('birthdate');
+  let enteredDate = birthdateInput.value.replace(/\D/g, ''); // Remove non-numeric characters;
+  let regexDate = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$|^\d{8}$/;
+
+  if (!regexDate.test(enteredDate)) {
+    setError(birthdate, 'La date n\'est pas valide');
+  } else {
+    setSuccess(birthdate);
+    birthdateValidate = true;
+  }
+
+
+  // function validateDate() {
+  //   var birthdateInput = document.getElementById('birthdate');
+  //   var enteredDate = birthdateInput.value;
+  
+  //   // Check if the entered date is valid (you can customize this validation)
+  //   var isValidDate = isValidDateFunction(enteredDate);
+  
+  //   if (!isValidDate) {
+  //     setError(birthdate, "La date de naissance renseignée n'est pas valide.");
+  //   } else {
+  //     // Clear any previous errors
+  //     setSuccess(birthdate); // Passing an empty string to clear the error
+  //     // You can proceed with form submission or other actions here
+  //     birthdateValidate = true;
+  //   }
+  // }
+  
+  // // Custom function to validate the date (you can customize this validation)
+  // function isValidDateFunction(dateString) {
+  //   // This is a simple example, you might want to use a more robust date validation library
+  //   var regex = /^\d{2}-\d{2}-\d{4}$/;
+  //   return regex.test(dateString);
   // }
 
 
 
-
-  if (!birthdateValue) {
-    setError(birthdate, 'La date de naissance n\'est pas renseignée');
-  } else if (!isValidBirthdate.test(birthdateValue)) {
-    setError(birthdate, 'La date de naissance renseignée n\'est pas valide');
-  } else {
-    setSuccess(birthdate);
-    setError(birthdate, '');
-    birthdateValidate = true;
-  }
 
 
    // Nombre de tournois

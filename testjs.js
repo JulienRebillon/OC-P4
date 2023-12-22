@@ -1,16 +1,31 @@
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
 
+  errorDisplay.innerText = message;
+  inputControl.classList.add('error');
+  inputControl.classList.remove('success');
+};
 
-function checkAge() {
-    let age = document.getElementById('age');
-//let age = parseInt(ageInput, 10);
-ageValue = age.value;
+function validateDate() {
+  var birthdateInput = document.getElementById('birthdate');
+  var enteredDate = birthdateInput.value;
 
-  console.log(ageValue);
-  if (ageValue < 18) {
-    document.getElementById('result').innerHTML = 'Vous êtes mineur.';
-  } else if (ageValue >= 18 && ageValue <= 65) {
-    document.getElementById('result').innerHTML = 'Vous êtes majeur.';
+  // Check if the entered date is valid (you can customize this validation)
+  var isValidDate = isValidDateFunction(enteredDate);
+
+  if (!isValidDate) {
+    setError(birthdateInput, "La date de naissance renseignée n'est pas valide.");
   } else {
-    document.getElementById('result').innerHTML = 'Vous êtes senior.';
+    // Clear any previous errors
+    setError(birthdateInput, ""); // Passing an empty string to clear the error
+    // You can proceed with form submission or other actions here
   }
+}
+
+// Custom function to validate the date (you can customize this validation)
+function isValidDateFunction(dateString) {
+  // This is a simple example, you might want to use a more robust date validation library
+  var regex = /^\d{4}-\d{2}-\d{2}$/;
+  return regex.test(dateString);
 }

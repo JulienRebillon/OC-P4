@@ -9,22 +9,82 @@
 </head>
 
 <body>
-  <h1>Age Verification</h2>
+  <form
+              name="reserve"
+              id="form"
+              action="index.html"
+              method="get"
+              onsubmit="return validate();"
+            >
+             
+          
 
-    <label for="age">Entrer votre age: </label>
-    <input type="number" id="age" />
+              <div
+                class="formData">
+                <label>Date de naissance</label><br>
+                <input
+                  class="text-control"
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                />
+                <div class="error" id="error_date"></div>
+                <br>
+              </div>
 
-    <button onclick="checkAge()">Vérifier</button>
+              
+
+              
+              
 
 
-    <p id="result">Resultat: </p>
+              <div
+                class="formData">
+                
+                <input class="checkbox-input" type="checkbox" id="checkbox1"/>
+                <label class="checkbox2-label" for="checkbox1">
+                  <span class="checkbox-icon"></span>
+                  J'ai lu et accepté les conditions d'utilisation.
+                
+                  
+              
+                </label>
+                <div class="error" id="error__conditions"></div>
+                
+                <!--<div class="error" id="error__checkbox1"></div>-->
+                
+                
+                <input class="checkbox-input" type="checkbox" id="checkbox2" checked/>
+                <label class="checkbox2-label" for="checkbox2">
+                  <span class="checkbox-icon"></span>
+                  Je souhaite être prévenu des prochains évènements.
+                </label>
+                <br>
+              </div>
+              <input
+                class="btn-submit button"
+                id="form-submit"
+                type="submit"
+                value="C'est parti"
+              />
+            </form>
 
-
-
-
-
-    <!--<script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>-->
-    <script src="testjs.js"></script>
+            <div id="thank-you">
+              <form
+              name="thank-you__close"
+              id="thank-you__close"
+              action="index.html"
+              method="get"
+              onsubmit="return validate();"
+              >
+              <p>Merci pour votre incription</p>
+              <input
+                class="btn-submit button"
+                type="submit"
+                value="Fermer"
+                onclick="closeModal()"
+              />
+              </form>
 </body>
 
 </html>

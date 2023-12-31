@@ -96,8 +96,8 @@ const setSuccess = element => {
 
 
 //définition des regex
-const isValidFirst = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
-const isValidLast = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+const isValidFirst = /^[a-zA-Z'-À-ÿ]+[^0-9@?#]+$/;
+const isValidLast = /^[a-zA-Z'-À-ÿ]+[^0-9@?#]+$/;
 const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const isValidQuantity = /[0-9]{1,2}/;
 
@@ -111,7 +111,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   const quantityValue = quantity.value.trim();
 
   // Prénom
-  if (firstValue.length < 2) {
+  if (firstValue.length <= 1) {
     setError(first, 'Vous devez rentrer au moins deux caractères');
   } else if (!isValidFirst.test(firstValue)) {
     setError(first, 'Le prénom n\'est pas valide');
@@ -121,7 +121,7 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
   }
 
   // Nom
-  if (lastValue.length < 2) {
+  if (lastValue.length <= 1) {
     setError(last, 'Vous devez rentrer au moins deux caractères');
   } else if (!isValidLast.test(lastValue)) {
     setError(last, 'Le nom n\'est pas valide');
@@ -135,8 +135,10 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     setError(email, 'L\'adresse email n\'est pas renseignée');
   } else if (!isValidEmail.test(emailValue)) {
     setError(email, 'L\'adresse email n\'est pas valide');
+    email.setCustomValidity(''); //reset browser default message
   } else {
     setSuccess(email);
+    email.setCustomValidity(''); //reset browser default message
     //setError(email, ''); //reset du message d'erreur
     emailValidate = true;
   }
@@ -164,6 +166,8 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     setError(quantity, 'Vous devez rentrer un nombre');
   } else if (!isValidQuantity.test(quantityValue)) {
     setError(quantity, 'Le nombre renseigné n\'est pas valide');
+  } else if (parseInt(quantityValue) < 0) {
+    setError(quantity, 'Le nombre ne peut pas être négatif');
   } else {
     setSuccess(quantity);
     quantityValidate = true;

@@ -135,10 +135,10 @@ const validateInputs = () => { //on utilise trim pour enlever les espaces superf
     setError(email, 'L\'adresse email n\'est pas renseignée');
   } else if (!isValidEmail.test(emailValue)) {
     setError(email, 'L\'adresse email n\'est pas valide');
-    email.setCustomValidity(''); //reset browser default message
+    
   } else {
     setSuccess(email);
-    email.setCustomValidity(''); //reset browser default message
+    
     //setError(email, ''); //reset du message d'erreur
     emailValidate = true;
   }
